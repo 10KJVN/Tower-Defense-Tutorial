@@ -1,12 +1,19 @@
-How to make a Tower Defense Game in Unity 
-========
+flowchart TD
 
-Learn how to make a 3D Tower Defence Game using Unity. All code is written entirely in C#.
-
-Watch the videos [HERE](https://www.youtube.com/playlist?list=PLPV2KyIb3jR4u5jX8za5iU1cqnQPmbzG0).
-
-###Software
-- This project runs on the [Unity](http://unity3d.com) engine. Make sure to have the newest version installed before running the project. The project folder is called "Tower Defense Unity Project".
-
-###Copyright
-This project is released into the public domain. For more information see LICENSE.
+start((Start)) -->|7 second countdown| Wave_Spawner(Spawns a wave)
+Wave_Spawner --> check(Check for enemy list)
+check --> Enemy_Spawner(Spawns the enemies)
+Enemy_Spawner --> Base_Check{Has an enemy reached the base?}
+Reached_Base ==>|yes| Health_down(Player loses 1 life)
+Reached_Base ==>|no| Currency(Player earns coins)
+lose_life --> Wave_Clear{Is the wave over?}
+Currency --> Wave_Clear
+Wave_Clear ==>|no| Reached_Base
+Wave_Count{No more waves?} -->|no more| More_Levels(Redirects you to level picker)
+Wave_Clear ==>|yes| no_more_waves
+Wave_Count -->|still waves| next_wave(go to next wave)
+Next_Wave --> Start_Wave
+Start_Wave --> Wave_Spawner
+More_Levels -->|yes, there are more| Next_Level(Start next level)
+More_Levels -->|no more levels| end_d((end))
+Next_Level --> start
