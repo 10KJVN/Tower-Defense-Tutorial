@@ -1,3 +1,8 @@
+# Tower_Defense
+
+## Flowchart voor Enemy AI script
+
+```mermaid
 flowchart TD
 
 start((Start)) -->|7 second countdown| Wave_Spawner(Spawns a wave)
@@ -17,3 +22,4 @@ Start_Wave --> Wave_Spawner
 More_Levels -->|yes, there are more| Next_Level(Start next level)
 More_Levels -->|no more levels| end_d((end))
 Next_Level --> start
+```
